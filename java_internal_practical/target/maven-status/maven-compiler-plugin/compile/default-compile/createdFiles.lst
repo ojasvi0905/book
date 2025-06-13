@@ -1,0 +1,4 @@
+com\example\bookinventory\repository\BookRepository.class
+com\example\bookinventory\controller\BookController.class
+com\example\bookinventory\model\Book.class
+com\example\bookinventory\BookInventoryApplication.class

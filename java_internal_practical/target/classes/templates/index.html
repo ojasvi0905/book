@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-sans p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold">📚 Book Inventory</h1>
+            <a href="/book/new"
+               class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded shadow">
+                ➕ Add New Book
+            </a>
+        </header>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-gray-800 rounded-lg shadow-lg">
+                <thead>
+                <tr class="text-gray-300 bg-gray-700 uppercase text-sm tracking-wider">
+                    <th class="py-3 px-4 text-left">ID</th>
+                    <th class="py-3 px-4 text-left">Title</th>
+                    <th class="py-3 px-4 text-left">Author</th>
+                    <th class="py-3 px-4 text-left">Qty</th>
+                    <th class="py-3 px-4 text-left">Price</th>
+                    <th class="py-3 px-4 text-left">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${books}" class="border-t border-gray-700 hover:bg-gray-700">
+                    <td class="py-3 px-4" th:text="${book.id}"></td>
+                    <td class="py-3 px-4" th:text="${book.title}"></td>
+                    <td class="py-3 px-4" th:text="${book.author}"></td>
+                    <td class="py-3 px-4" th:text="${book.quantity}"></td>
+                    <td class="py-3 px-4" th:text="${book.price}"></td>
+                    <td class="py-3 px-4 space-x-2">
+                        <a th:href="@{'/book/edit/' + ${book.id}}"
+                           class="text-yellow-400 hover:underline font-medium">✏️ Edit</a>
+                        <a th:href="@{'/book/delete/' + ${book.id}}"
+                           onclick="return confirm('Are you sure?')"
+                           class="text-red-400 hover:underline font-medium">🗑️ Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
