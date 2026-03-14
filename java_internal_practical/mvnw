@@ -1,2 +1,0 @@
-#!/bin/sh
-./.mvn/wrapper/maven-wrapper.sh "$@"
